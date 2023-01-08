@@ -143,6 +143,7 @@ public class UserManagementServiceImpl implements UserManagementService {
 		String captialLeatters = "ABCDEFGHIJKLMNOPQRSTVXYZ";
 		String smallLetters = "abcdefghijklmnopqrstuvxyz";
 		String number = "0123456789";
+		
 
 		String combination = captialLeatters + smallLetters + number;
 		int length = 6;

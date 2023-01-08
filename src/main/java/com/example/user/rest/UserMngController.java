@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.user.binding.LoginForm;
 import com.example.user.binding.UnlockAccForm;
 import com.example.user.binding.UserForm;
-import com.example.user.entity.User;
 import com.example.user.service.UserManagementService;
 
 @RestController
