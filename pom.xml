@@ -15,8 +15,11 @@
 	<name>User-management</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+	<sonar.host.url>http://44.193.74.188:9000/</sonar.host.url>
+	<sonar.token>a5787774d7e5d86c8fa727c60c8b4cf5a4e4223b</sonar.token>
+	<java.version>1.8</java.version>
+  </properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -39,12 +42,12 @@
 			<artifactId>spring-integration-jpa</artifactId>
 		</dependency>
 
-		<!-- <dependency>
+		 <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency> -->
+		</dependency> 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

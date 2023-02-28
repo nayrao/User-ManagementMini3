@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.example.user.binding.LoginForm;
 import com.example.user.binding.UnlockAccForm;
 import com.example.user.binding.UserForm;
+import com.example.user.constant.AppConstant;
 import com.example.user.entity.Cities;
 import com.example.user.entity.Country;
 import com.example.user.entity.States;
@@ -48,7 +49,7 @@ public class UserManagementServiceImpl implements UserManagementService {
 	public String checkEmail(String email) {
 		User findByEmail = userRepository.findByEmail(email);
 
-		return (findByEmail == null) ? "Unique email" : "Email is AlreadyExisting";
+		return (findByEmail == null) ? AppConstant.UNIQUE : AppConstant.DUPLICATE;
 
 	}
 
@@ -90,7 +91,7 @@ public class UserManagementServiceImpl implements UserManagementService {
 		String subject = "Registration Application";
 		String body = readEmailBody("REG_EMAIL_BODY.txt", entity);
 		emailUtils.sendHtmlEmail(to, subject, body);
-		return "User Account is Created";
+		return AppConstant.ACCOUNT_CREATED;
 
 	}
 
@@ -103,9 +104,9 @@ public class UserManagementServiceImpl implements UserManagementService {
 			account.setUserPwd(unlockAccForm.getTempPwd());
 			account.setAccStatus("UNLOCKED");
 			userRepository.save(account);
-			return "unlock -success";
+			return AppConstant.UNLOCK_SUCCESS;
 		} else {
-			return "unlock error";
+			return AppConstant.UNLOCK_ERROR;
 		}
 	}
 
@@ -116,12 +117,12 @@ public class UserManagementServiceImpl implements UserManagementService {
 				loginForm.getPassword());
 
 		if (findByEmailAndUserPwd == null) {
-			return "Credentials are Invalid";
+			return AppConstant.INVALID_CREDENTIALS;
 		}
-		if (findByEmailAndUserPwd.getAccStatus().equals("LOCKED")) {
-			return "Your Account Is Locked";
+		if("LOCKED".equals(findByEmailAndUserPwd.getAccStatus())) {
+			return AppConstant.ACCOUNT_LOCKED;
 		}
-		return "Login Success";
+		return AppConstant.LOGIN_SUCCESS;
 	}
 
 	@Override
